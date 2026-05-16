@@ -97,6 +97,24 @@ devctl run
 
 Upon termination (Ctrl+C), `devctl` gracefully stops all processes and performs a clean teardown of Docker resources.
 
+### Dockerfile Scaffolding
+
+Generate Dockerfiles for all detected Spring Boot, Angular, and Vue/Vite services without building or running containers.
+
+```bash
+devctl dockerize
+devctl dockerize ./my-workspace --dry-run
+devctl dockerize --force
+```
+
+Generated assets are intentionally limited to service-local `Dockerfile` files. Existing Dockerfiles are skipped by default; use `--force` to replace them.
+
+Build an image from a generated Dockerfile with:
+
+```bash
+docker build -t my-service ./my-service
+```
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
